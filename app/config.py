@@ -34,13 +34,6 @@ except Exception:
     print("\n\nPlease set the INDEX_SETTINGS environment variable correctly")
     sys.exit(1)
 
-try:
-    session_string = os.environ["SESSION_STRING"]
-except (KeyError, ValueError):
-    traceback.print_exc()
-    print("\n\nPlease set the SESSION_STRING environment variable correctly")
-    sys.exit(1)
-
 host = os.environ.get("HOST", "0.0.0.0")
 debug = bool(os.environ.get("DEBUG"))
 block_downloads = bool(os.environ.get("BLOCK_DOWNLOADS"))

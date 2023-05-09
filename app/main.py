@@ -14,7 +14,6 @@ from .views import Views, middleware_factory
 from .config import (
     host,
     port,
-    session_string,
     api_id,
     api_hash,
     authenticated,
@@ -54,7 +53,7 @@ class Indexer:
         self.server.on_startup.append(self.startup)
         self.server.on_cleanup.append(self.cleanup)
 
-        self.tg_client = Client(session_string, api_id, api_hash)
+        self.tg_client = Client(api_id, api_hash)
 
         self.server["is_authenticated"] = authenticated
         self.server["username"] = username

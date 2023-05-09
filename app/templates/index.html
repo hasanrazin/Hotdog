@@ -1,14 +1,13 @@
 {% include 'header.html' %} {% block javascript %}
 <script type="text/javascript">
 	{% include "./js/filesaver.min.js" %}
-    {% include "./js/playlist.js" %}
-
+	{% include "./js/playlist.js" %}
 </script>
 {% endblock %}
 
 <div class="block md:flex justify-between items-center px-4 text-center border-b-2">
 	<div class="m-2 block md:flex items-center justify-center md:justify-start text-2xl md:text-right font-bold text-blue-500">
-		<img class="mx-auto md:ml-0 md:mr-1 my-4 md:my-2 w-16 h-16 rounded-full bg-black outline-none" src="{{logo}}">
+		<img src="{{logo}}" class="mx-auto md:ml-0 md:mr-1 my-4 md:my-2 w-16 h-16 rounded-full bg-black outline-none"/>
         <a href="javascript:window.location.href=window.location.href"> {{name}} </a>
     </div>
 
@@ -46,12 +45,11 @@
 
         <!-- Card  -->
         <div title="{% if item.media %} {{item.mime_type}} | {{item.human_size}} {% else %} Text message {% endif %}"
-            href="{{item.url}}"
             class="text-sm items-center justify-center w-full min-h-full sm:w-2/5 md:w-1/4 lg:w-1/6 rounded m-2 shadow hover:shadow-lg dark:bg-red-700">
 
             {% if item.media %}
 
-                <a href="{{item.url}}"><img src="{{item.thumbnail}}" class="w-full rounded shadow-inner"></a>
+                <a href="{{item.url}}"><img src="{{item.thumbnail}}" class="w-full rounded shadow-inner"/></a>
                 <div class="p-2">{{item.insight}}</div>
                 <!-- Buttons container -->
                 <span class="inline-flex mb-1 rounded shadow-inner dark:bg-green-500">                    
@@ -68,7 +66,7 @@
 
                         {% if 'video' in item.mime_type %}
                             <!--  Kodi/media player supported url ending with v.mp4 -->
-                            <a title="v.mp4" href="{{item.download}}"
+                            <a href="{{item.download}}" title="v.mp4"
                                 class="flex-1 hover:bg-blue-300 text-gray-900 font-semibold py-1 px-2 rounded items-center">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                                     stroke="currentColor">
@@ -94,7 +92,7 @@
                 </span>
 
             {% else %}
-            <a href={{item.url}}>
+            <a href="{{item.url}}">
                 <div class="p-4 rounded shadow-inner rounded text-dark py-0 px-2">{{item.insight}}</div>
             </a>
             {% endif %}
@@ -114,17 +112,17 @@
 
 <div class="mx-auto my-2 text-center flex text-white content-center justify-center">
     {% if prev_page %}
-    <a title="Previous page"
+    <a href="{{prev_page.url}}"
         class="mx-2 p-2 border rounded bg-green-500 hover:border-green-500 hover:text-green-500 hover:bg-white"
-        href="{{prev_page.url}}">Page {{prev_page.no}}</a>
+        title="Previous page">Page {{prev_page.no}}</a>
     {% endif %}
     <p
         class="mx-2 p-2 border rounded border-green-500 text-green-500 hover:border-green-500 hover:text-green-500 hover:bg-white">
         Page {{cur_page}}</p>
     {% if next_page %}
-    <a title="Next page"
+    <a href="{{next_page.url}}"
         class="mx-2 p-2 border rounded bg-green-500 hover:border-green-500 hover:text-green-500 hover:bg-white"
-        href="{{next_page.url}}">Page {{next_page.no}}</a>
+        title="Next page">Page {{next_page.no}}</a>
     {% endif %}
 </div>
 

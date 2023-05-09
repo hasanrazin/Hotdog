@@ -3,12 +3,11 @@ import logging
 import asyncio
 
 from telethon import TelegramClient, utils
-from telethon.sessions import StringSession
 
 
 class Client(TelegramClient):
-    def __init__(self, session_string: str, *args, **kwargs):
-        super().__init__(StringSession(session_string), *args, **kwargs)
+    def __init__(self, *args, **kwargs):
+        super().__init__("tg-index.session", *args, **kwargs)
         self.log = logging.getLogger(__name__)
 
     async def download(self, file, file_size, offset, limit):
