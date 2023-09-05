@@ -1,5 +1,6 @@
 import logging
 from typing import List
+from os import path
 
 from aiohttp import web
 from aiohttp.web_routedef import RouteDef
@@ -9,7 +10,6 @@ from .config import index_settings
 from .views import Views
 
 log = logging.getLogger(__name__)
-
 
 def get_common_routes(handler: Views, alias_id: str) -> List[RouteDef]:
     p = "/{chat:" + alias_id + "}"
@@ -34,7 +34,6 @@ def get_common_routes(handler: Views, alias_id: str) -> List[RouteDef]:
         ),
     ]
 
-
 async def setup_routes(app: web.Application, handler: Views):
     client = handler.client
     index_all = index_settings["index_all"]
@@ -49,6 +48,7 @@ async def setup_routes(app: web.Application, handler: Views):
         web.post("/login", handler.login_post, name="login_handle"),
         web.get("/logout", handler.logout_get, name="logout"),
         web.get("/favicon.ico", handler.faviconicon, name="favicon"),
+        web.static("/static_res", f"{path.dirname(path.abspath(__file__))}/res", name="static_res"),
     ]
 
     if index_all:

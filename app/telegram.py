@@ -4,7 +4,6 @@ import asyncio
 
 from telethon import TelegramClient, utils
 
-
 class Client(TelegramClient):
     def __init__(self, *args, **kwargs):
         super().__init__("tg-index.session", *args, **kwargs)

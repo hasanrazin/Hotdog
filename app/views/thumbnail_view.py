@@ -8,9 +8,7 @@ from telethon.tl import types, custom
 
 from .base import BaseView
 
-
 log = logging.getLogger(__name__)
-
 
 class ThumbnailView(BaseView):
     async def thumbnail_get(self, req: web.Request) -> web.Response:

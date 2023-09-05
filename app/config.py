@@ -5,7 +5,6 @@ import json
 import sys
 import os
 
-
 try:
     port = int(os.environ.get("PORT", "8080"))
 except Exception as e:
@@ -45,6 +44,7 @@ password = os.environ.get("PASSWORD", "")
 SHORT_URL_LEN = int(os.environ.get("SHORT_URL_LEN", 3))
 authenticated = bool(username and password)
 SESSION_COOKIE_LIFETIME = int(os.environ.get("SESSION_COOKIE_LIFETIME") or "60")
+
 try:
     SECRET_KEY = os.environ["SECRET_KEY"]
     if len(SECRET_KEY) != 32:

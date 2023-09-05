@@ -6,7 +6,6 @@ from aiohttp import web
 from app.config import logo_folder
 from .base import BaseView
 
-
 class FaviconIconView(BaseView):
     async def faviconicon(self, req: web.Request) -> web.Response:
         favicon_path = logo_folder.joinpath("favicon.ico")

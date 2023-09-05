@@ -3,7 +3,6 @@ from aiohttp import web
 
 from .base import BaseView
 
-
 class LogoutView(BaseView):
     async def logout_get(self, req: web.Request) -> web.Response:
         session = await get_session(req)

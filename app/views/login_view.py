@@ -5,7 +5,6 @@ import aiohttp_jinja2
 from aiohttp_session import new_session
 from .base import BaseView
 
-
 class LoginView(BaseView):
     @aiohttp_jinja2.template("login.html")
     async def login_get(self, req: web.Request) -> web.Response:

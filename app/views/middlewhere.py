@@ -6,9 +6,7 @@ from aiohttp.web import middleware, HTTPFound, Response, Request
 from aiohttp import BasicAuth, hdrs
 from aiohttp_session import get_session
 
-
 log = logging.getLogger(__name__)
-
 
 def _do_basic_auth_check(request: Request) -> Union[None, bool]:
     if "download_" not in request.match_info.route.name:
@@ -47,7 +45,6 @@ def _do_basic_auth_check(request: Request) -> Union[None, bool]:
 
     return True
 
-
 async def _do_cookies_auth_check(request: Request) -> Union[None, bool]:
     session = await get_session(request)
     if not session.get("logged_in", False):
@@ -55,7 +52,6 @@ async def _do_cookies_auth_check(request: Request) -> Union[None, bool]:
 
     session["last_at"] = time.time()
     return True
-
 
 def middleware_factory() -> Coroutine:
     @middleware

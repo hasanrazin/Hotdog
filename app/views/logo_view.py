@@ -5,13 +5,10 @@ import random
 from aiohttp import web
 from telethon.tl import types
 
-
 from app.config import logo_folder
 from .base import BaseView
 
-
 log = logging.getLogger(__name__)
-
 
 class LogoView(BaseView):
     async def logo(self, req: web.Request) -> web.Response:
@@ -40,10 +37,11 @@ class LogoView(BaseView):
                 im = Image.new("RGB", (W, H), color)
                 draw = ImageDraw.Draw(im)
                 font = ImageFont.truetype("arial.ttf", 50)
-                w, h = draw.textsize(chat_name, font=font)
-                draw.text(
-                    ((W - w) / 2, (H - h) / 2), chat_name, fill="white", font=font
-                )
+                #w, h = draw.textsize(chat_name, font=font)
+                #draw.text(
+                #    ((W - w) / 2, (H - h) / 2), chat_name, fill="white", font=font
+                #)
+                draw.text((W, H), chat_name, fill="white", font=font)
                 im.save(logo_path)
             else:
                 pos = -1 if req.query.get("big", None) else int(len(photo.sizes) / 2)

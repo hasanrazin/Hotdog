@@ -18,9 +18,7 @@ from .logout_view import LogoutView
 from .faviconicon_view import FaviconIconView
 from .middlewhere import middleware_factory
 
-
 TELEGRAM_CHAT = Union[Chat, User, Channel]
-
 
 class Views(
     HomeView,

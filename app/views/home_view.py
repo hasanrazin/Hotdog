@@ -3,7 +3,6 @@ import aiohttp_jinja2
 
 from .base import BaseView
 
-
 class HomeView(BaseView):
     @aiohttp_jinja2.template("home.html")
     async def home(self, req: web.Request) -> web.Response:

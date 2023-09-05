@@ -7,9 +7,7 @@ from app.util import get_file_name
 from app.config import block_downloads
 from .base import BaseView
 
-
 log = logging.getLogger(__name__)
-
 
 class Download(BaseView):
     async def download_get(self, req: web.Request) -> web.Response:

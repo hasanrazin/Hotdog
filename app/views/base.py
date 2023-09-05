@@ -4,9 +4,7 @@ from telethon.tl.types import Chat, User, Channel
 
 from ..telegram import Client
 
-
 TELEGRAM_CHAT = Union[Chat, User, Channel]
-
 
 class BaseView:
     client: Client

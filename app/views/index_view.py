@@ -10,9 +10,7 @@ from app.config import results_per_page, block_downloads
 from app.util import get_file_name, get_human_size
 from .base import BaseView
 
-
 log = logging.getLogger(__name__)
-
 
 class IndexView(BaseView):
     @aiohttp_jinja2.template("index.html")

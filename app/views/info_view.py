@@ -11,9 +11,7 @@ from app.util import get_file_name, get_human_size
 from app.config import block_downloads
 from .base import BaseView
 
-
 log = logging.getLogger(__name__)
-
 
 class InfoView(BaseView):
     @aiohttp_jinja2.template("info.html")
@@ -63,7 +61,7 @@ class InfoView(BaseView):
                 media["image"] = True
 
             if message.text:
-                caption = message.raw_text
+                caption = message.text #message.raw_text
             else:
                 caption = ""
 
