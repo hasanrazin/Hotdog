@@ -80,6 +80,9 @@ class InfoView(BaseView):
                     "download_url": "#"
                     if block_downloads
                     else f"/{alias_id}/{file_id}/{file_name}",
+                    "full_preview_url": "#"
+                    if block_downloads
+                    else f"/{alias_id}/{file_id}/{file_name}/preview",
                     "page_id": alias_id,
                     "block_downloads": block_downloads,
                 }

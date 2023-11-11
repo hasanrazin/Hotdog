@@ -1,11 +1,11 @@
 {% include 'header.html' %}
 
-            <div class="p-4 space-y-8">
-                {% if found %}
-                    {% if media %}
-                        <h1 class="text-blue-500 text-center text-lg lg:text-xl xl:text-3xl w-full break-all">
-                            Download {{name}}
-                        </h1>
+	<div class="p-4 space-y-8">
+		{% if found %}
+			{% if media %}
+				<h1 class="text-blue-500 text-center text-lg lg:text-xl xl:text-3xl w-full break-all">
+					Download {{name}}
+				</h1>
 
                         <div class="mx-auto w-full p-2 md:w-3/4 lg:w-2/5 p-2">
                             {% if media.image %}
@@ -70,7 +70,6 @@
                             {% endif %}
 
                             {% if caption_html %}
-
                                 <div class="mx-auto mt-1">
                                     <div class="flex justify-center text-gray-300 font-mono">
                                         <p class="text-left w-full rounded p-4 bg-gray-900 shadow-lg"> {{ caption_html|safe }} </p>
@@ -89,17 +88,19 @@
                                         </div>
                                     {% endif %}
                                 </div>
-
                             {% endif %}
 
                         </div>
                         
-                        <div class="text-center text-white">
-
-                            <a href="{{download_url}}"
-                            class="rounded p-3 bg-indigo-500 hover:bg-indigo-700 shadow-lg{% if block_downloads %} cursor-not-allowed disabled{% else %}" download="{{name}}{% endif %}"
-                            >Download Now! ({{ human_size }})</a>
-
+                        <div class="text-center text-white space-x-2">
+                        	{% if media.image %}
+                            	<a href="{{full_preview_url}}"
+                            	class="TgIndexActionButton rounded p-3 bg-indigo-500 hover:bg-indigo-700 shadow-lg{% if block_downloads %} cursor-not-allowed disabled{% else %}"{% endif %}
+                            	>View at High Resolution</a><!--
+                            -->{% endif %}<!--
+                            --><a href="{{download_url}}"
+                            class="TgIndexActionButton rounded p-3 bg-indigo-500 hover:bg-indigo-700 shadow-lg{% if block_downloads %} cursor-not-allowed disabled{% else %}" download="{{name}}{% endif %}"
+                            >Download Now ({{ human_size }})</a>
                         </div>
                     {% else %}
                         <div class="mx-auto flex flex-wrap justify-center w-full md:w-3/4 mt-1">

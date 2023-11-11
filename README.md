@@ -1,39 +1,41 @@
-# Telegram Index
+# Telegram Index Fork
 
-> Python Web App which indexes a telegram channel(or a chat) and serves its files for download.
+A simple Python webapp which indexes any configured Telegram chat (including channels) and serves its files for download.
+
+This fork makes the app work on updated Linux systems with updated Python and libraries (specifically, this has been tested on Debian Bookworm with the distro's `python3` package), and implements a few quality-of-life bugfixes and new features.
 
 [![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.png?v=103)](.) [![GPLv3 license](https://img.shields.io/badge/License-GPLv3-blue.svg)](LICENSE)
 
-## Highlights
+A working production demo is available at <https://hlb0.octt.eu.org/Drive/Telegram/>.
 
-- Index one or more telegram channels/chats.
-- View messages and media files on the browser.
-- Search through the channel/chat.
-- Download media files through browser/download managers.
+## Features, Present and Planned
 
-## Deploy Guide
+[x] Index one or more telegram channels/chats
+[x] View text messages and media files on the browser
+[x] Search through the chat's messages
+[x] Download any files through browsers or download managers, with direct HTTP links
+[ ] Fix text message and caption formatting (from Markdown to HTML)
+[ ] Atom/RSS feeds
+[ ] Implement a secondary chat-like view (like t.me/s)
 
-- **Clone to local machine.**
+## Deploying
 
-```sh
-git clone https://github.com/odysseusmax/tg-index.git
-cd tg-index
-```
-
-- **Create and activate virtual environment.**
+- **Clone to local machine**
 
 ```sh
-python -m venv venv
-source venv/bin/activate
+git clone https://github.com/octospacc/TelegramIndex-Fork
+cd TelegramIndex-Fork
 ```
 
-- **Install dependencies.**
+- **Install dependencies**
 
 ```sh
-pip3 install -U -r requirements.txt
+sudo -H pip3 install -r requirements.txt
 ```
 
-- **Environment Variables.**
+- **Environment Variables**
+
+The app is configured via environment variables that must be set in your shell before starting the program.
 
 | Variable Name                        | Value                                                                                                                 |
 | ------------------------------------ | --------------------------------------------------------------------------------------------------------------------- |
@@ -75,21 +77,28 @@ This is the general format, change the values of corresponding fields as your re
 > - `exclude_chats` - An array/list of chat id's that should be ignored for indexing. Only considered if `index_all` is set to `true`.
 > - `include_chats` - An array/list of chat id's to index. Only considered if `index_all` is set to `false`.
 
-- **Run app.**
+- **Run app**
 
 ```bash
+set -a; source .env # (or whatever other way you use to load the environment variables)
 python3 -m app
 ```
 
-Note: you will be asked to **log in** the first time. (Login with the telegram account which is a participant of the chats you want to index).  
+or, run the included wrapper script for a better experience:
+
+```bash
+bash ./StartTelegramIndex.sh
+```
+
+Note: you will be asked to **log in** the first time. (Login with the telegram account which is a participant of the chats you want to index).
 After that, a `tg-index.session` file will be stored in the current working directory. **Keep it secret and secure**.
 
 ## Deploy Guide (Repl.it)
 
-A detailed and beginner friendly guide on how to deploy this project on a free instance of <https://repl.it> can be found [here](./repl-config/replit-deploy-guide.md).
+A (unmantained!) detailed and beginner friendly guide on how to deploy this project on a free instance of <https://repl.it> can be found [here](./repl-config/replit-deploy-guide.md).
 
 ## License, Credits
 
 This program is forked from [odysseusmax/tg-index](https://github.com/odysseusmax/tg-index).
 
-As per the original, code is released under [The GNU General Public License](LICENSE).
+As per the original, code is released under [The GNU General Public License Version 3](LICENSE).

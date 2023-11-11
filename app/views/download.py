@@ -74,7 +74,7 @@ class Download(BaseView):
             "Content-Range": f"bytes {offset}-{limit}/{size}",
             "Content-Length": str(limit - offset),
             "Accept-Ranges": "bytes",
-            "Content-Disposition": f'attachment; filename="{file_name}"',
+            "Content-Disposition": '' if str(req.rel_url).endswith('/preview') else f'attachment; filename="{file_name}"',
         }
 
         return web.Response(status=206 if offset else 200, body=body, headers=headers)

@@ -2,11 +2,20 @@
 <html lang="en">
 
 <head>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="utf-8"/>
+	<meta name="generator" content="https://github.com/octospacc/TelegramIndex-Fork"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	<link href="{{ app.router['static_res'].url_for(filename='css/tailwind.rx.css') }}" rel="stylesheet"/>
 	<style>
 		* {
 			font-family: 'Roboto', 'Liberation Sans', 'Noto Sans', sans-serif;
+		}
+		/*.TgIndexHeader {
+			user-select: none;
+		}*/
+		.TgIndexActionButton {
+			display: inline-block;
+			margin: 0.5em;
 		}
 	</style>
 	<style id="StylesheetDarkTheme">
@@ -29,6 +38,7 @@
 			.TgChatCard:hover {
 				background-color: #241501;
 			}
+
 		}
 	</style>
 	<script src="{{ app.router['static_res'].url_for(filename='js/fluidplayer.min.js') }}" type="text/javascript"></script>
@@ -46,15 +56,27 @@
 	})();
 	</script>
 	<title>
-		{% if title %} {{title}} {% else %} Telegram Index {% endif %}
+		{% if title %} {{ title }} {% else %} Telegram Index {% endif %}
 	</title>
+	<meta property="og:title" content="{% if title %} {{ title }} {% else %} Telegram Index {% endif %}">
+	{% if text_html or caption_html %}
+		<meta name="description" content="{{ text_html }}{{ caption_html }}"/>
+		<meta property="og:description" content="{{ text_html }}{{ caption_html }}"/>
+	{% endif %}
+	{% if media and media.image %}
+		<meta property="og:image" content="{{ thumbnail }}"/>
+	{% endif %}
 </head>
 
 <body class="bg-white text-black dark:bg-black dark:text-white" style="overflow-x: hidden;">
 
-	<header class="bg-blue-300 dark:bg-red-500 text-white mb-2 p-2 w-full shadow">
+	<header class="TgIndexHeader bg-blue-300 dark:bg-red-500 text-white mb-2 p-2 w-full shadow">
 		<div class="flex mx-auto justify-between items-center max-w-screen-xl">
-			<a href="/" id="title-a" class="text-left font-bold text-xl lg:text-2xl xl:text-3xl"> Telegram Index </a>
+			<span class="space-x-3">
+				<a href="/" id="title-a" class="text-left font-bold text-xl lg:text-2xl xl:text-3xl">Telegram Index</a><!--
+				-->{% if found %}<span>[<a href=".." class="text-left font-bold">Up</a>]</span>{% endif %}
+				<!--{% if item_list %}<span>[<a href="./feed.xml" class="text-left font-bold">Feed</a>]</span>{% endif %}-->
+			</span>
 			<div class="space-x-1">
 				<span style="vertical-align: super; white-space: pre;">[<a 
 				href="https://github.com/octospacc/TelegramIndex-Fork" class="font-bold underline"
@@ -67,7 +89,7 @@
 			<img src="{{ app.router['static_res'].url_for(filename='icons/logout.png') }}" class="h-8" alt="Logout">
 			</a></button>
 		{% else %} {% endif %}
-      </div>
+			</div>
 		</div>
 
 	</header>
