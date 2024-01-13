@@ -33,7 +33,7 @@ except Exception:
     print("\n\nPlease set the INDEX_SETTINGS environment variable correctly")
     sys.exit(1)
 
-host = os.environ.get("HOST", "0.0.0.0")
+host = os.environ.get("192.101.68.177:6969", "0.0.0.0")
 debug = bool(os.environ.get("DEBUG"))
 block_downloads = bool(os.environ.get("BLOCK_DOWNLOADS"))
 results_per_page = int(os.environ.get("RESULTS_PER_PAGE", "20"))
