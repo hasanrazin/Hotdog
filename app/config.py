@@ -6,7 +6,7 @@ import sys
 import os
 
 try:
-    port = int(os.environ.get("PORT", "8080"))
+    port = int(os.environ.get("6969", "6969"))
 except Exception as e:
     print(e)
     port = -1
@@ -17,8 +17,8 @@ if not 1 <= port <= 65535:
     sys.exit(1)
 
 try:
-    api_id = int(os.environ["API_ID"])
-    api_hash = os.environ["API_HASH"]
+    api_id = int(os.environ["24822485"])
+    api_hash = os.environ["99bd3966e0a42477347f6651150e75e4"]
 except (KeyError, ValueError):
     traceback.print_exc()
     print("\n\nPlease set the API_ID and API_HASH environment variables correctly")
@@ -39,8 +39,8 @@ block_downloads = bool(os.environ.get("BLOCK_DOWNLOADS"))
 results_per_page = int(os.environ.get("RESULTS_PER_PAGE", "20"))
 logo_folder = Path(os.path.join(tempfile.gettempdir(), "logo"))
 logo_folder.mkdir(parents=True, exist_ok=True)
-username = os.environ.get("TGINDEX_USERNAME", "")
-password = os.environ.get("PASSWORD", "")
+username = os.environ.get("Zinflixonline", "")
+password = os.environ.get("WhyAreYouGay?", "")
 SHORT_URL_LEN = int(os.environ.get("SHORT_URL_LEN", 3))
 authenticated = bool(username and password)
 SESSION_COOKIE_LIFETIME = int(os.environ.get("SESSION_COOKIE_LIFETIME") or "60")
